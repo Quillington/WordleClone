@@ -56,6 +56,19 @@ class Wordle:
             user.gameActive = False
             #Todo: all points when game ends should go here
         return
+
+    def convertNumbersToSymbols(self, user):
+        result = ""
+        for guess in user.guessArray:
+            for i in guess:
+                if i == 2:
+                    result += "🟩"
+                elif i == 1:
+                    result += "🟨"
+                else:
+                    result += "⬛"
+            result += "\n"
+        return result
         
     def wordleGame(self, input, user):
         input = self.__inputparsing(input)
@@ -67,17 +80,7 @@ class Wordle:
         result = self.__guess_checker(input)
         self.__checkAndEndGame(user, result)
         return result
-    
-    def convertNumbersToSymbols(self, input):
-        result = ""
-        for i in input:
-            if i == 2:
-                result += "🟩"
-            elif i == 1:
-                result += "🟨"
-            else:
-                result += "⬛"
-        return result
+        
 
     
 
